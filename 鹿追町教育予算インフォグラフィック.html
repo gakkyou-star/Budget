@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鹿追町 令和８年度 教育予算インフォグラフィック</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2b4e;
+    --blue: #1a5fa8;
+    --sky: #4a9fd4;
+    --teal: #2a9d8f;
+    --green: #3aaa6e;
+    --amber: #e9a621;
+    --orange: #e07533;
+    --gray: #5a6a7a;
+    --border: #d0dce8;
+    --light: #f0f5fb;
+    --white: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:#e8eef6; color:var(--navy); font-size:16px; line-height:1.6; }
+  .page { width:1100px; margin:0 auto; background:var(--white); }
+
+  /* HEADER */
+  .header { background:linear-gradient(135deg,#0d2b4e 0%,#1a5fa8 60%,#4a9fd4 100%); color:white; padding:36px 56px 28px 48px; position:relative; overflow:hidden; display:flex; justify-content:space-between; align-items:center; gap:32px; }
+  .header::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; border-radius:50%; background:rgba(255,255,255,0.06); pointer-events:none; }
+  .header-left { flex:1; min-width:0; }
+  .header-label { font-size:14px; font-weight:500; letter-spacing:0.12em; opacity:0.75; margin-bottom:8px; }
+  .header h1 { font-family:'Noto Serif JP',serif; font-size:32px; font-weight:700; line-height:1.3; margin-bottom:16px; }
+  .header-sub { font-size:16px; opacity:0.85; }
+  .header-total { flex-shrink:0; text-align:right; position:relative; z-index:1; }
+  .total-label { font-size:14px; opacity:0.75; margin-bottom:4px; }
+  .total-amount { font-size:40px; font-weight:900; line-height:1; }
+  .total-unit { font-size:18px; font-weight:500; opacity:0.85; margin-left:4px; }
+  .total-oku { font-size:13px; opacity:0.7; margin-top:4px; }
+
+  /* PHILOSOPHY */
+  .philosophy { background:#0d2b4e; color:white; padding:14px 56px; display:flex; align-items:center; gap:32px; }
+  .philosophy-label { font-size:14px; opacity:0.6; white-space:nowrap; }
+  .philosophy-items { display:flex; gap:24px; }
+  .philosophy-item { font-size:15px; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .philosophy-item::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; background:#e9a621; flex-shrink:0; }
+  .philosophy-item:nth-child(2)::before { background:#2a9d8f; }
+
+  /* MAIN */
+  .main { padding:40px 56px 40px 48px; display:grid; gap:36px; }
+
+  /* SECTION TITLE */
+  .section-title { font-size:20px; font-weight:700; color:var(--navy); border-left:5px solid var(--blue); padding-left:14px; margin-bottom:20px; line-height:1.3; }
+  .section-title span { display:block; font-size:13px; font-weight:400; color:var(--gray); margin-top:2px; }
+
+  /* STATS */
+  .stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .stat-box { background:white; border-radius:10px; padding:18px 16px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-bottom:4px solid var(--blue); }
+  .stat-box:nth-child(2) { border-bottom-color:#2a9d8f; }
+  .stat-box:nth-child(3) { border-bottom-color:#e9a621; }
+  .stat-box:nth-child(4) { border-bottom-color:#7b4fa6; }
+  .stat-num { font-size:30px; font-weight:900; color:var(--navy); line-height:1; margin-bottom:4px; }
+  .stat-num small { font-size:16px; font-weight:500; }
+  .stat-label { font-size:14px; color:var(--gray); line-height:1.4; }
+
+  /* BAR CHART */
+  .chart-section { background:var(--light); border-radius:12px; padding:32px 36px; }
+  .bar-chart { display:flex; flex-direction:column; gap:14px; }
+  .bar-row { display:flex; align-items:center; }
+  .bar-label { width:220px; font-size:15px; font-weight:500; text-align:right; padding-right:16px; flex-shrink:0; line-height:1.3; }
+  .bar-track { flex:1; background:rgba(0,0,0,0.07); border-radius:4px; height:36px; position:relative; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:4px; display:flex; align-items:center; justify-content:flex-end; padding-right:10px; position:relative; }
+  .bar-value { font-size:13px; font-weight:700; color:white; white-space:nowrap; }
+  .bar-value-out { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; margin-left:10px; min-width:120px; }
+  .badge { display:inline-block; background:var(--blue); color:white; font-size:11px; font-weight:700; padding:1px 7px; border-radius:10px; margin-left:5px; }
+
+  /* CATEGORY GRID */
+  .category-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .cat-card { border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07); }
+  .cat-header { padding:16px 18px 12px; color:white; }
+  .cat-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; }
+  .cat-icon { font-size:22px; }
+  .cat-amount { font-size:26px; font-weight:900; line-height:1; }
+  .cat-unit { font-size:14px; font-weight:500; opacity:0.85; }
+  .cat-pct { font-size:13px; opacity:0.8; }
+  .cat-name { font-size:16px; font-weight:700; margin-top:6px; }
+  .cat-body { background:white; padding:14px 18px; }
+  .cat-project { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); font-size:14px; }
+  .cat-project:last-child { border-bottom:none; }
+  .cat-pname { font-weight:500; }
+  .cat-pamt { font-weight:700; color:var(--gray); font-size:14px; }
+  .cat-total { display:flex; justify-content:space-between; align-items:center; padding:8px 18px; margin:0 -18px -14px; }
+
+  /* POLICY GRID */
+  .policy-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .policy-card { background:white; border-radius:12px; border:1.5px solid var(--border); padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+  .policy-header { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+  .policy-num { background:var(--blue); color:white; font-size:13px; font-weight:700; padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+  .policy-title { font-size:15px; font-weight:700; line-height:1.4; }
+  .policy-bar { background:var(--light); border-radius:6px; padding:10px 14px; }
+  .policy-row { display:flex; align-items:center; gap:8px; padding:4px 0; }
+  .pdot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .pname { font-size:13px; color:var(--gray); flex:1; }
+  .pamt { font-size:13px; font-weight:700; color:var(--navy); white-space:nowrap; }
+  .policy-total { display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:8px; border-top:1.5px solid var(--border); }
+  .ptotal-label { font-size:14px; color:var(--gray); font-weight:500; }
+  .ptotal-amt { font-size:18px; font-weight:900; color:var(--blue); }
+
+  /* ANALYSIS */
+  .analysis-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .analysis-card { background:white; border-radius:12px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,0.07); border-top:4px solid var(--blue); }
+  .analysis-card:nth-child(2) { border-top-color:#2a9d8f; }
+  .analysis-card:nth-child(3) { border-top-color:#7b4fa6; }
+  .a-icon { font-size:28px; margin-bottom:10px; }
+  .a-title { font-size:15px; font-weight:700; margin-bottom:10px; line-height:1.4; }
+  .a-hl { font-size:24px; font-weight:900; color:var(--blue); display:block; margin-bottom:4px; }
+  .analysis-card:nth-child(2) .a-hl { color:#2a9d8f; }
+  .analysis-card:nth-child(3) .a-hl { color:#7b4fa6; }
+  .a-text { font-size:14px; color:var(--gray); line-height:1.7; }
+
+  /* SUMMARY */
+  .summary-cards { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  .sum-card { background:white; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.07); }
+  .sum-circle { width:64px; height:64px; border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:24px; }
+  .sum-pct { font-size:24px; font-weight:900; }
+  .sum-label { font-size:13px; color:var(--gray); margin-top:4px; line-height:1.4; }
+
+  /* FOOTER */
+  .footer { background:var(--navy); color:white; padding:20px 56px 20px 48px; display:flex; justify-content:space-between; align-items:center; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <div class="header-label">鹿追町教育委員会　／　令和８年度（2026年度）予算</div>
+      <h1>学校教育予算<br>インフォグラフィック</h1>
+      <div class="header-sub">教育大綱「持続可能な社会の創り手の育成・ウェルビーイングの向上」に基づく投資分析</div>
+    </div>
+    <div class="header-total">
+      <div class="total-label">教育費　総予算額</div>
+      <div class="total-amount">683<span class="total-unit">百万円</span></div>
+      <div class="total-oku">（6億8,345万円　千円単位　16事業計上）</div>
+    </div>
+  </div>
+
+  <div class="philosophy">
+    <div class="philosophy-label">教育大綱　総括的方針</div>
+    <div class="philosophy-items">
+      <div class="philosophy-item">持続可能な社会の創り手の育成</div>
+      <div class="philosophy-item">ウェルビーイングの向上</div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">683<small>百万円</small></div>
+        <div class="stat-label">令和８年度<br>教育費総額</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">16<small>事業</small></div>
+        <div class="stat-label">予算計上<br>事業数</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">40.5<small>%</small></div>
+        <div class="stat-label">高校教育への<br>重点投資比率</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">22<small>百万円</small></div>
+        <div class="stat-label">グローバル・外国語<br>関連予算（可視部分）</div>
+      </div>
+    </div>
+
+    <!-- BAR CHART -->
+    <div class="chart-section">
+      <div class="section-title">事業別予算配分<span>単位：千円　　全16事業　合計 683,454千円　　（参考：最大棒＝183,866千円を100%として表示）</span></div>
+      <div class="bar-chart">
+
+        <div class="bar-row">
+          <div class="bar-label">中学校事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#1a5fa8,#4a9fd4);">
+              <span class="bar-value">183,866千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">26.9%<span class="badge">最大</span></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">鹿追高校振興事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:75.2%;background:linear-gradient(90deg,#2a9d8f,#3aaa6e);">
+              <span class="bar-value">138,245千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">20.2%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">鹿追高校寄宿舎事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:48.4%;background:linear-gradient(90deg,#3aaa6e,#80c97a);">
+              <span class="bar-value">89,028千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">13.0%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">学校給食運営経費</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:32.9%;background:linear-gradient(90deg,#e9a621,#f0b845);">
+              <span class="bar-value">60,586千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">8.9%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">学校教育振興事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:32.8%;background:linear-gradient(90deg,#e07533,#eb9155);">
+              <span class="bar-value">60,327千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">8.8%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">小学校事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:26.4%;background:linear-gradient(90deg,#7b4fa6,#9e72c4);">
+              <span class="bar-value">48,504千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">7.1%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">地域おこし協力隊経費</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:24.0%;background:linear-gradient(90deg,#d45f8a,#e07baa);">
+              <span class="bar-value">44,078千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">6.5%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">修学基金積立金</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:12.9%;background:#7890a8;">
+              <span class="bar-value" style="font-size:12px;">23,808千円</span>
+            </div>
+          </div>
+          <div class="bar-value-out">3.5%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">小中高一貫教育推進事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:6.7%;background:#5599cc;"></div>
+          </div>
+          <div class="bar-value-out" style="font-size:13px;">12,312千円　1.8%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">英語指導助手（ALT）事業</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:5.2%;background:#4dbfa8;"></div>
+          </div>
+          <div class="bar-value-out" style="font-size:13px;">9,538千円　1.4%</div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label" style="color:var(--gray);">その他６事業合計</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:7.2%;background:#a0b0c0;"></div>
+          </div>
+          <div class="bar-value-out" style="font-size:13px;">13,169千円　1.9%</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CATEGORY -->
+    <div>
+      <div class="section-title">学校段階別・目的別　予算カテゴリ分析<span>事業を学校段階・目的別に再分類集計</span></div>
+      <div class="category-grid">
+
+        <div class="cat-card">
+          <div class="cat-header" style="background:linear-gradient(135deg,#2a9d8f,#3aaa6e);">
+            <div class="cat-top"><span class="cat-icon">🎓</span><div><div class="cat-amount">277<span class="cat-unit">百万円</span></div><div class="cat-pct">全体の 40.5%</div></div></div>
+            <div class="cat-name">高校教育（振興・寄宿舎）</div>
+          </div>
+          <div class="cat-body">
+            <div class="cat-project"><span class="cat-pname">鹿追高校振興事業</span><span class="cat-pamt">138,245千円</span></div>
+            <div class="cat-project"><span class="cat-pname">鹿追高校寄宿舎事業</span><span class="cat-pamt">89,028千円</span></div>
+            <div class="cat-total" style="background:#f0faf8;border-radius:0 0 12px 12px;">
+              <span style="font-weight:700;color:#2a9d8f;font-size:14px;">合計</span>
+              <span style="font-weight:900;color:#2a9d8f;font-size:16px;">227,273千円</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-header" style="background:linear-gradient(135deg,#1a5fa8,#4a9fd4);">
+            <div class="cat-top"><span class="cat-icon">📚</span><div><div class="cat-amount">232<span class="cat-unit">百万円</span></div><div class="cat-pct">全体の 34.0%</div></div></div>
+            <div class="cat-name">義務教育（小学校・中学校）</div>
+          </div>
+          <div class="cat-body">
+            <div class="cat-project"><span class="cat-pname">中学校事業</span><span class="cat-pamt">183,866千円</span></div>
+            <div class="cat-project"><span class="cat-pname">小学校事業（３校合計）</span><span class="cat-pamt">48,504千円</span></div>
+            <div class="cat-total" style="background:#f0f5fb;border-radius:0 0 12px 12px;">
+              <span style="font-weight:700;color:#1a5fa8;font-size:14px;">合計</span>
+              <span style="font-weight:900;color:#1a5fa8;font-size:16px;">232,370千円</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-header" style="background:linear-gradient(135deg,#e9a621,#f0c050);">
+            <div class="cat-top"><span class="cat-icon">🍱</span><div><div class="cat-amount">64<span class="cat-unit">百万円</span></div><div class="cat-pct">全体の 9.4%</div></div></div>
+            <div class="cat-name">学校給食（食育・無償化）</div>
+          </div>
+          <div class="cat-body">
+            <div class="cat-project"><span class="cat-pname">学校給食運営経費</span><span class="cat-pamt">60,586千円</span></div>
+            <div class="cat-project"><span class="cat-pname">学校給食維持管理経費</span><span class="cat-pamt">3,420千円</span></div>
+            <div class="cat-total" style="background:#fffbf0;border-radius:0 0 12px 12px;">
+              <span style="font-weight:700;color:#c88a10;font-size:14px;">合計</span>
+              <span style="font-weight:900;color:#c88a10;font-size:16px;">64,006千円</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-header" style="background:linear-gradient(135deg,#e07533,#eb9155);">
+            <div class="cat-top"><span class="cat-icon">✨</span><div><div class="cat-amount">116<span class="cat-unit">百万円</span></div><div class="cat-pct">全体の 17.0%</div></div></div>
+            <div class="cat-name">教育振興・グローバル・一貫教育</div>
+          </div>
+          <div class="cat-body">
+            <div class="cat-project"><span class="cat-pname">学校教育振興事業</span><span class="cat-pamt">60,327千円</span></div>
+            <div class="cat-project"><span class="cat-pname">地域おこし協力隊経費</span><span class="cat-pamt">44,078千円</span></div>
+            <div class="cat-project"><span class="cat-pname">小中高一貫教育推進事業</span><span class="cat-pamt">12,312千円</span></div>
+            <div class="cat-total" style="background:#fff8f4;border-radius:0 0 12px 12px;">
+              <span style="font-weight:700;color:#c06020;font-size:14px;">合計</span>
+              <span style="font-weight:900;color:#c06020;font-size:16px;">116,717千円</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-header" style="background:linear-gradient(135deg,#7b4fa6,#9e72c4);">
+            <div class="cat-top"><span class="cat-icon">🌍</span><div><div class="cat-amount">22<span class="cat-unit">百万円</span></div><div class="cat-pct">全体の 3.2%（可視部分）</div></div></div>
+            <div class="cat-name">グローバル・外国語教育</div>
+          </div>
+          <div class="cat-body">
+            <div class="cat-project"><span class="cat-pname">英語指導助手（ALT）事業</span><span class="cat-pamt">9,538千円</span></div>
+            <div class="cat-project"><span class="cat-pname">小中高一貫教育推進（中学IB含む）</span><span class="cat-pamt">12,312千円</span></div>
+            <div style="font-size:13px;color:#7b4fa6;padding:6px 0 4px;line-height:1.4;">※国際バカロレアは中学校に導入（高校は対象外）</div>
+            <div class="cat-total" style="background:#f8f5fc;border-radius:0 0 12px 12px;">
+              <span style="font-weight:700;color:#7b4fa6;font-size:14px;">直接確認可能額</span>
+              <span style="font-weight:900;color:#7b4fa6;font-size:16px;">21,850千円＋</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-header" style="background:linear-gradient(135deg,#5a6a7a,#7890a8);">
+            <div class="cat-top"><span class="cat-icon">🏛️</span><div><div class="cat-amount">37<span class="cat-unit">百万円</span></div><div class="cat-pct">全体の 5.4%</div></div></div>
+            <div class="cat-name">基金積立・教育行政管理</div>
+          </div>
+          <div class="cat-body">
+            <div class="cat-project"><span class="cat-pname">修学基金積立金</span><span class="cat-pamt">23,808千円</span></div>
+            <div class="cat-project"><span class="cat-pname">教育委員会事務局事業</span><span class="cat-pamt">3,979千円</span></div>
+            <div class="cat-project"><span class="cat-pname">教育委員会委員事業ほか</span><span class="cat-pamt">5,745千円</span></div>
+            <div class="cat-total" style="background:#f5f7fa;border-radius:0 0 12px 12px;">
+              <span style="font-weight:700;color:#5a6a7a;font-size:14px;">合計</span>
+              <span style="font-weight:900;color:#5a6a7a;font-size:16px;">37,088千円</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- POLICY MAPPING -->
+    <div>
+      <div class="section-title">教育大綱　施策別　予算マッピング分析<span>「鹿追町教育大綱（令和5年4月）」の政策への対応関係</span></div>
+      <div class="policy-grid">
+
+        <div class="policy-card">
+          <div class="policy-header">
+            <span class="policy-num">政策１</span>
+            <div class="policy-title">グローバル社会における人材育成<br>（外国語教育・カナダ姉妹校提携・グローバル人材）</div>
+          </div>
+          <div class="policy-bar">
+            <div class="policy-row"><div class="pdot" style="background:#7b4fa6;"></div><div class="pname">英語指導助手（ALT）事業</div><div class="pamt">9,538千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#9e72c4;"></div><div class="pname">小中高一貫教育推進事業（中学校IB含む）</div><div class="pamt">12,312千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#c9a8e8;"></div><div class="pname">鹿追高校振興事業（修学資金貸付金・通学車両費除く）</div><div class="pamt">91,688千円内</div></div>
+          </div>
+          <div class="policy-total"><span class="ptotal-label">直接確認可能額</span><span class="ptotal-amt" style="color:#7b4fa6;">21,850千円＋</span></div>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-header">
+            <span class="policy-num" style="background:#d45f8a;">政策２</span>
+            <div class="policy-title">イノベーションを担う人材育成<br>（探究教育・アントレプレナーシップ）</div>
+          </div>
+          <div class="policy-bar">
+            <div class="policy-row"><div class="pdot" style="background:#d45f8a;"></div><div class="pname">地域おこし協力隊経費（学校教育課担当）</div><div class="pamt">44,078千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#e07baa;"></div><div class="pname">鹿追高校振興事業（鹿追創生P・地域みらい留学）</div><div class="pamt">138,245千円内</div></div>
+          </div>
+          <div class="policy-total"><span class="ptotal-label">直接確認可能額</span><span class="ptotal-amt" style="color:#d45f8a;">44,078千円＋</span></div>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-header">
+            <span class="policy-num" style="background:#1a5fa8;">政策５</span>
+            <div class="policy-title">確かな学力の育成・個別最適な学び<br>（アクティブ・ラーニング・ICT活用）</div>
+          </div>
+          <div class="policy-bar">
+            <div class="policy-row"><div class="pdot" style="background:#1a5fa8;"></div><div class="pname">中学校事業（施設整備費除く）</div><div class="pamt">33,866千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#4a9fd4;"></div><div class="pname">小学校事業（鹿追・笹川・瓜幕各校）</div><div class="pamt">48,504千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#7bbde0;"></div><div class="pname">学校教育振興事業（ICT・支援員等）</div><div class="pamt">60,327千円</div></div>
+          </div>
+          <div class="policy-total"><span class="ptotal-label">合計</span><span class="ptotal-amt">142,697千円</span></div>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-header">
+            <span class="policy-num" style="background:#e07533;">政策15</span>
+            <div class="policy-title">安全・安心で質の高い教育環境整備<br>（施設長寿命化・バリアフリー・防災）</div>
+          </div>
+          <div class="policy-bar">
+            <div class="policy-row"><div class="pdot" style="background:#e07533;"></div><div class="pname">中学校事業（鹿追中バリアフリー化改修工事）</div><div class="pamt">150,000千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#eb9155;"></div><div class="pname">高校寄宿舎事業（ペンギンハウス緑化等）</div><div class="pamt">89,028千円内</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#f0b070;"></div><div class="pname">高校協力会補助金（通学車両運行事業）</div><div class="pamt">17,252千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#f5c8a0;"></div><div class="pname">財産管理事業（施設管理）</div><div class="pamt">2,234千円</div></div>
+          </div>
+          <div class="policy-total"><span class="ptotal-label">合計（主要施設整備額）</span><span class="ptotal-amt" style="color:#e07533;">258,514千円＋</span></div>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-header">
+            <span class="policy-num" style="background:#e9a621;">政策13</span>
+            <div class="policy-title">経済的状況によらない学びの確保<br>（修学支援・給食無償化継続）</div>
+          </div>
+          <div class="policy-bar">
+            <div class="policy-row"><div class="pdot" style="background:#e9a621;"></div><div class="pname">修学基金積立金（奨学貸付制度）</div><div class="pamt">23,808千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#f0b845;"></div><div class="pname">学校給食運営経費（無償化継続）</div><div class="pamt">60,586千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#e07533;"></div><div class="pname">修学資金貸付金（高校振興事業内）</div><div class="pamt">29,305千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#f5d07a;"></div><div class="pname">武藤孔二記念奨学基金積立金</div><div class="pamt">32千円</div></div>
+          </div>
+          <div class="policy-total"><span class="ptotal-label">合計</span><span class="ptotal-amt" style="color:#c88a10;">113,731千円</span></div>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-header">
+            <span class="policy-num" style="background:#2a9d8f;">政策10・12</span>
+            <div class="policy-title">地域・学校・家庭連携・教育基盤強化<br>（コミュニティSch・教師ウェルビーイング）</div>
+          </div>
+          <div class="policy-bar">
+            <div class="policy-row"><div class="pdot" style="background:#2a9d8f;"></div><div class="pname">学校教育振興事業（研修・ICT基盤等）</div><div class="pamt">60,327千円内</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#3aaa6e;"></div><div class="pname">小中高一貫教育推進事業</div><div class="pamt">12,312千円</div></div>
+            <div class="policy-row"><div class="pdot" style="background:#8abca0;"></div><div class="pname">教育委員会事務局事業（研修・管理）</div><div class="pamt">3,979千円</div></div>
+          </div>
+          <div class="policy-total"><span class="ptotal-label">直接確認可能額</span><span class="ptotal-amt" style="color:#2a9d8f;">16,291千円＋</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ANALYSIS -->
+    <div>
+      <div class="section-title">予算分析　－　３つの重要視点<span>教育大綱の方針と予算配分の整合性・特徴分析</span></div>
+      <div class="analysis-grid">
+
+        <div class="analysis-card">
+          <div class="a-icon">🎯</div>
+          <div class="a-title">高校教育への戦略的集中投資</div>
+          <span class="a-hl">40.5%（277百万円）</span>
+          <div class="a-text">高校振興（138百万円）と高校寄宿舎（89百万円）を合わせ、全教育予算の40.5%を高校教育に投資。寄宿舎整備による地域外生徒受入環境の充実と、地域みらい留学・カナダ姉妹校提携等の高校魅力化が最重点課題。大綱政策１（グローバル人材）・政策２（イノベーション）に直結する最大の単一投資分野。</div>
+        </div>
+
+        <div class="analysis-card">
+          <div class="a-icon">🏗️</div>
+          <div class="a-title">義務教育施設の大規模バリアフリー整備</div>
+          <span class="a-hl">1.5億円（補助事業）</span>
+          <div class="a-text">中学校事業（184百万円）の主要部分を占める鹿追中学校バリアフリー化改修工事（1.5億円）は本年度最大の施設投資案件。大綱政策15「安全・安心な教育環境整備」および政策６「共生社会の実現」（インクルーシブ教育）への対応。小学校事業（49百万円）との差は中学への集中整備投資によるもの。</div>
+        </div>
+
+        <div class="analysis-card">
+          <div class="a-icon">🌐</div>
+          <div class="a-title">地域おこし協力隊×教育の独自モデル</div>
+          <span class="a-hl">44百万円（6.5%）</span>
+          <div class="a-text">地域おこし協力隊経費（44百万円、6.5%）を学校教育課が担当する点が鹿追町の特徴的戦略。移住・人材誘致と教育政策を連動させ、大綱政策２「イノベーション人材育成」・政策10「地域学校協働」を推進。ALT事業（9.5百万円）と合わせ、グローバル教育への継続的投資を維持している。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUMMARY VISUAL -->
+    <div class="chart-section">
+      <div class="section-title">予算構成まとめ　－　全体像<span>教育大綱の総括的方針への投資分野マップ（左右の構成比バーで全体を視覚化）</span></div>
+
+      <div class="summary-cards">
+        <div class="sum-card">
+          <div class="sum-circle" style="background:linear-gradient(135deg,#2a9d8f,#3aaa6e);">🎓</div>
+          <div class="sum-pct" style="color:#2a9d8f;">40.5%</div>
+          <div class="sum-label">高校教育<br>振興・寄宿舎</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-circle" style="background:linear-gradient(135deg,#1a5fa8,#4a9fd4);">📖</div>
+          <div class="sum-pct" style="color:#1a5fa8;">34.0%</div>
+          <div class="sum-label">義務教育<br>小学校・中学校</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-circle" style="background:linear-gradient(135deg,#e07533,#eb9155);">✨</div>
+          <div class="sum-pct" style="color:#e07533;">17.0%</div>
+          <div class="sum-label">教育振興<br>グローバル・一貫</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-circle" style="background:linear-gradient(135deg,#e9a621,#f0c050);">🍱</div>
+          <div class="sum-pct" style="color:#c88a10;">9.4%</div>
+          <div class="sum-label">学校給食<br>食育・無償化</div>
+        </div>
+        <div class="sum-card">
+          <div class="sum-circle" style="background:linear-gradient(135deg,#5a6a7a,#7890a8);">🏛️</div>
+          <div class="sum-pct" style="color:#5a6a7a;">5.4%</div>
+          <div class="sum-label">基金積立<br>教育行政</div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div style="height:32px;border-radius:16px;overflow:hidden;display:flex;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+          <div style="width:40.5%;background:linear-gradient(90deg,#2a9d8f,#3aaa6e);display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:700;">高校 40.5%</div>
+          <div style="width:34.0%;background:linear-gradient(90deg,#1a5fa8,#4a9fd4);display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:700;">義務 34.0%</div>
+          <div style="width:17.0%;background:linear-gradient(90deg,#e07533,#eb9155);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;">振興 17.0%</div>
+          <div style="width:9.4%;background:linear-gradient(90deg,#e9a621,#f0c050);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;"></div>
+          <div style="flex:1;background:linear-gradient(90deg,#5a6a7a,#7890a8);"></div>
+        </div>
+        <div style="display:flex;gap:24px;margin-top:10px;font-size:14px;color:var(--gray);flex-wrap:wrap;">
+          <span>● 高校教育（40.5%）</span>
+          <span>● 義務教育（34.0%）</span>
+          <span>● 教育振興・グローバル（17.0%）</span>
+          <span>● 学校給食（9.4%）</span>
+          <span>● 基金・行政（5.4%）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVENUE SECTION -->
+    <div class="chart-section">
+      <div class="section-title">歳入予算　－　財源別集計<span>歳入予算313,398千円　＋　地域おこし協力隊特別交付税措置51,500千円　＝　実質歳入合計 364,898千円</span></div>
+
+      <!-- 財源充当率 サマリ -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;">
+        <div style="background:white;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);border-bottom:4px solid #1a5fa8;">
+          <div style="font-size:26px;font-weight:900;color:#1a5fa8;line-height:1;">364,898<small style="font-size:14px;font-weight:500;">千円</small></div>
+          <div style="font-size:13px;color:#5a6a7a;margin-top:4px;line-height:1.4;">実質歳入合計<br>（特別交付税含む）</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);border-bottom:4px solid #2a9d8f;">
+          <div style="font-size:26px;font-weight:900;color:#2a9d8f;line-height:1;">53.4<small style="font-size:14px;font-weight:500;">%</small></div>
+          <div style="font-size:13px;color:#5a6a7a;margin-top:4px;line-height:1.4;">歳出予算に対する<br>歳入充当率</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);border-bottom:4px solid #e9a621;">
+          <div style="font-size:26px;font-weight:900;color:#e9a621;line-height:1;">318,556<small style="font-size:14px;font-weight:500;">千円</small></div>
+          <div style="font-size:13px;color:#5a6a7a;margin-top:4px;line-height:1.4;">一般財源負担額<br>（歳出－歳入）</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);border-bottom:4px solid #7b4fa6;">
+          <div style="font-size:26px;font-weight:900;color:#7b4fa6;line-height:1;">51,500<small style="font-size:14px;font-weight:500;">千円</small></div>
+          <div style="font-size:13px;color:#5a6a7a;margin-top:4px;line-height:1.4;">特別交付税措置<br>（地域おこし協力隊）</div>
+        </div>
+      </div>
+
+      <!-- 款別バーチャート -->
+      <div style="margin-bottom:24px;">
+        <div style="font-size:16px;font-weight:700;color:#0d2b4e;margin-bottom:16px;padding-left:14px;border-left:4px solid #2a9d8f;">款別歳入内訳</div>
+        <div class="bar-chart">
+
+          <div class="bar-row">
+            <div class="bar-label">町債（中学校債）</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#5a6a7a,#7890a8);">
+                <span class="bar-value">102,600千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">28.1%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">国庫支出金</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:64.7%;background:linear-gradient(90deg,#1a5fa8,#4a9fd4);">
+                <span class="bar-value">66,367千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">18.2%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">特別交付税措置<br><span style="font-size:12px;font-weight:400;">（地域おこし協力隊）</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:50.2%;background:linear-gradient(90deg,#7b4fa6,#9e72c4);">
+                <span class="bar-value">51,500千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">14.1%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">繰入金</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:48.2%;background:linear-gradient(90deg,#e07533,#eb9155);">
+                <span class="bar-value">49,496千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">13.6%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">使用料及び手数料</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:38.3%;background:linear-gradient(90deg,#2a9d8f,#3aaa6e);">
+                <span class="bar-value">39,239千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">10.8%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">諸収入</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:34.4%;background:linear-gradient(90deg,#d45f8a,#e07baa);">
+                <span class="bar-value">35,286千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">9.7%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label">道支出金</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:15.2%;background:linear-gradient(90deg,#e9a621,#f0b845);">
+                <span class="bar-value" style="font-size:12px;">15,584千円</span>
+              </div>
+            </div>
+            <div class="bar-value-out">4.3%</div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label" style="color:#5a6a7a;">財産収入</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:4.7%;background:#a0b0c0;"></div>
+            </div>
+            <div class="bar-value-out" style="font-size:13px;">4,826千円　1.3%</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 主要歳入明細 + 特別交付税明細 2列 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+        <!-- 主要歳入明細 -->
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#0d2b4e;margin-bottom:12px;padding-left:14px;border-left:4px solid #1a5fa8;">主要歳入明細</div>
+          <div style="background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+              <thead>
+                <tr style="background:#0d2b4e;color:white;">
+                  <th style="padding:10px 14px;text-align:left;font-weight:600;">歳入科目</th>
+                  <th style="padding:10px 14px;text-align:right;font-weight:600;white-space:nowrap;">金額（千円）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#f5f8ff;">
+                  <td style="padding:9px 14px;border-bottom:1px solid #e0e8f0;color:#5a6a7a;font-size:13px;" colspan="2">　国庫支出金</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">学校施設環境改善交付金（中学校）</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">35,961</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">地域未来交付金</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">28,062</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">防音事業関連維持費補助金</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">1,260</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">その他国庫補助金</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">1,084</td>
+                </tr>
+                <tr style="background:#f5f8ff;">
+                  <td style="padding:9px 14px;border-bottom:1px solid #e0e8f0;color:#5a6a7a;font-size:13px;" colspan="2">　使用料・繰入金・諸収入</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">鹿追高校寄宿舎使用料</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">39,239</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">修学基金繰入金</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">29,304</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">修学資金貸付金償還金</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">23,528</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">鹿追高等学校支援基金繰入金</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">20,000</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">道補助金（給食費負担軽減等）</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">15,584</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">カナダ短期留学事業負担金ほか諸収入</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">11,758</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px 8px 22px;border-bottom:1px solid #e0e8f0;">教員住宅貸家料ほか財産収入</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">4,826</td>
+                </tr>
+                <tr style="background:#f0f5fb;">
+                  <td style="padding:10px 14px;border-bottom:1px solid #d0dce8;font-weight:700;color:#0d2b4e;">町債（中学校バリアフリー改修）</td>
+                  <td style="padding:10px 14px;border-bottom:1px solid #d0dce8;text-align:right;font-weight:900;color:#1a5fa8;">102,600</td>
+                </tr>
+                <tr style="background:#e8eff8;">
+                  <td style="padding:10px 14px;font-weight:700;color:#0d2b4e;">歳入合計</td>
+                  <td style="padding:10px 14px;text-align:right;font-weight:900;color:#1a5fa8;font-size:16px;">313,398</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 特別交付税明細 -->
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#0d2b4e;margin-bottom:12px;padding-left:14px;border-left:4px solid #7b4fa6;">地域おこし協力隊　特別交付税措置内訳</div>
+          <div style="background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:16px;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+              <thead>
+                <tr style="background:#7b4fa6;color:white;">
+                  <th style="padding:10px 14px;text-align:left;font-weight:600;">職種・区分</th>
+                  <th style="padding:10px 8px;text-align:center;font-weight:600;">人数</th>
+                  <th style="padding:10px 14px;text-align:right;font-weight:600;white-space:nowrap;">措置額（千円）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">地域プロジェクトマネージャー</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">1名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">6,800</td>
+                </tr>
+                <tr style="background:#faf8ff;">
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">地域活性化起業人</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">1名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">6,700</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">高校コーディネーター</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">1名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">5,500</td>
+                </tr>
+                <tr style="background:#faf8ff;">
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">教育支援センター指導員</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">2名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">11,000</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">ハウスマスター</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">2名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">11,000</td>
+                </tr>
+                <tr style="background:#faf8ff;">
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">GIGAサポートデスク</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">1名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">5,500</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;">二地域居住コーディネーター</td>
+                  <td style="padding:8px 8px;border-bottom:1px solid #e0e8f0;text-align:center;">1名</td>
+                  <td style="padding:8px 14px;border-bottom:1px solid #e0e8f0;text-align:right;font-weight:700;">5,000</td>
+                </tr>
+                <tr style="background:#f0ebf8;">
+                  <td style="padding:10px 14px;font-weight:700;color:#7b4fa6;">特別交付税措置　合計</td>
+                  <td style="padding:10px 8px;text-align:center;font-weight:700;color:#7b4fa6;">9名</td>
+                  <td style="padding:10px 14px;text-align:right;font-weight:900;color:#7b4fa6;font-size:16px;">51,500</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 財源構成メモ -->
+          <div style="background:linear-gradient(135deg,#f0f5fb,#e8eff8);border-radius:10px;padding:16px;border-left:4px solid #1a5fa8;">
+            <div style="font-size:14px;font-weight:700;color:#0d2b4e;margin-bottom:8px;">📊 歳出に対する財源充当の考え方</div>
+            <div style="font-size:13px;color:#5a6a7a;line-height:1.8;">
+              ・依存財源（国・道・特別交付税）：<strong style="color:#1a5fa8;">133,451千円（19.5%）</strong><br>
+              ・町債（バリアフリー改修）：<strong style="color:#5a6a7a;">102,600千円（15.0%）</strong><br>
+              ・自主財源（使用料・繰入金等）：<strong style="color:#2a9d8f;">128,847千円（18.9%）</strong><br>
+              ・一般財源負担：<strong style="color:#e07533;">318,556千円（46.6%）</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>
+      <div style="font-weight:700;margin-bottom:2px;">鹿追町教育委員会　学校教育課</div>
+      <div style="opacity:0.6;font-size:13px;">令和８年度（2026年度）予算集計データをもとに作成　　金額は千円単位（予算確定額）　　未確定項目を含む集計値</div>
+    </div>
+    <div style="text-align:right;opacity:0.7;font-size:13px;">
+      根拠文書：鹿追町教育大綱（令和5年4月策定）<br>
+      歳出総額 683,454千円　／　歳入合計（特別交付税含む）364,898千円
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
