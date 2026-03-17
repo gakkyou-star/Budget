@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鹿追町 鹿追高等学校支援予算 令和8年度</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Bebas+Neue&display=swap');
+  :root{--navy:#0a1628;--nm:#0f2044;--nl:#1a3a6e;--gold:#f5c518;--gl:#ffd94a;--teal:#00c9b1;--coral:#ff6b5b;--sky:#4fc3f7;--lav:#b388ff;--wh:#f0f4ff;--mu:#8fa8d0;}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--navy);color:var(--wh);font-family:'Noto Sans JP',sans-serif;}
+  .page{max-width:1100px;margin:0 auto;padding:48px 32px 64px;}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;padding-bottom:40px;margin-bottom:52px;border-bottom:1px solid rgba(245,197,24,.2);position:relative;}
+  .hero::after{content:'';position:absolute;bottom:-1px;left:0;width:180px;height:3px;background:var(--gold);}
+  .ey{font-size:14px;letter-spacing:4px;color:var(--teal);text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+  .hero h1{font-weight:900;font-size:clamp(26px,3.8vw,42px);line-height:1.25;}
+  .hero h1 .hl{color:var(--gold);}
+  .hdesc{margin-top:14px;font-size:14px;color:var(--mu);line-height:1.9;}
+  .hdesc strong{color:var(--wh);}
+  .badge{background:linear-gradient(135deg,#182f5e,var(--nm));border:2px solid var(--gold);border-radius:16px;padding:24px 28px;min-width:210px;text-align:center;position:relative;overflow:hidden;}
+  .badge::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(245,197,24,.08);}
+  .by{font-size:14px;letter-spacing:3px;color:var(--gold);margin-bottom:4px;}
+  .bnum{font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:1;color:var(--gold);letter-spacing:2px;}
+  .bunit{font-size:20px;font-weight:700;color:var(--gl);}
+  .bsub{font-size:14px;color:var(--mu);margin-top:3px;}
+  .bchip{display:inline-block;margin-top:10px;background:rgba(0,201,177,.12);border:1px solid var(--teal);border-radius:20px;padding:3px 12px;font-size:14px;color:var(--teal);font-weight:700;}
+
+  /* SECTION */
+  .sh{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .sn{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold);opacity:.45;line-height:1;}
+  .st{font-size:14px;font-weight:900;letter-spacing:3px;color:var(--mu);text-transform:uppercase;border-left:3px solid var(--gold);padding-left:10px;}
+
+  /* YOY */
+  .yoy{background:var(--nm);border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;margin-bottom:44px;}
+  .yblk{text-align:center;}
+  .yyr{font-size:14px;letter-spacing:3px;color:var(--mu);margin-bottom:6px;}
+  .yamt{font-family:'Bebas Neue',sans-serif;font-size:50px;line-height:1;}
+  .yu{font-size:14px;font-weight:700;}
+  .ysm{font-size:14px;color:var(--mu);margin-top:2px;}
+  .ymid{text-align:center;}
+  .yarr{font-size:28px;color:var(--teal);}
+  .ydelta{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--teal);}
+  .ydl{font-size:14px;color:var(--mu);}
+
+  /* HIGHLIGHT */
+  .hlg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:44px;}
+  .hlb{background:var(--nm);border-radius:10px;padding:18px 14px;text-align:center;border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;}
+  .hlb::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:55%;height:2px;}
+  .h1::before{background:var(--teal);}.h2::before{background:var(--gold);}.h3::before{background:var(--coral);}.h4::before{background:var(--sky);}
+  .hico{font-size:22px;margin-bottom:6px;}
+  .hval{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;margin-bottom:2px;}
+  .h1 .hval{color:var(--teal);}.h2 .hval{color:var(--gold);}.h3 .hval{color:var(--coral);}.h4 .hval{color:var(--sky);}
+  .hu{font-size:14px;font-weight:700;color:var(--mu);}
+  .hlbl{font-size:14px;color:var(--mu);line-height:1.5;margin-top:4px;}
+
+  /* CATEGORY */
+  .catg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:44px;}
+  .cat{background:var(--nm);border-radius:12px;padding:24px 22px;border-top:4px solid;position:relative;overflow:hidden;}
+  .cat::after{content:'';position:absolute;bottom:0;right:0;width:80px;height:80px;border-radius:50% 0 12px 0;opacity:.05;}
+  .ca{border-color:var(--sky);}.ca::after{background:var(--sky);}
+  .cb{border-color:var(--lav);}.cb::after{background:var(--lav);}
+  .cico{font-size:26px;margin-bottom:10px;}
+  .cnm{font-size:14px;font-weight:700;color:var(--mu);margin-bottom:6px;}
+  .camt{font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:1;margin-bottom:4px;}
+  .ca .camt{color:var(--sky);}.cb .camt{color:var(--lav);}
+  .cu{font-size:14px;color:var(--mu);}
+  .cpct{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;padding:2px 10px;border-radius:10px;}
+  .ca .cpct{background:rgba(79,195,247,.12);color:var(--sky);}.cb .cpct{background:rgba(179,136,255,.12);color:var(--lav);}
+
+  /* BARS */
+  .bars{margin-bottom:44px;}
+  .br{display:grid;grid-template-columns:220px 1fr 110px;align-items:center;gap:14px;margin-bottom:13px;}
+  .bl{font-size:14px;font-weight:700;text-align:right;}
+  .bs{font-size:14px;color:var(--mu);font-weight:400;}
+  .bt{background:rgba(255,255,255,.055);border-radius:4px;height:30px;overflow:hidden;}
+  .bf{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;position:relative;}
+  .bf::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08));border-radius:4px;}
+  .bi{font-size:14px;color:rgba(255,255,255,.75);font-weight:700;z-index:1;}
+  .bv{font-size:14px;color:var(--mu);font-weight:700;white-space:nowrap;}
+
+  /* SONOTA */
+  .stbl{background:var(--nm);border-radius:12px;overflow:hidden;margin-bottom:44px;}
+  .shd{display:grid;grid-template-columns:1fr 120px 120px;padding:10px 18px;font-size:14px;letter-spacing:2px;color:var(--mu);font-weight:700;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+  .sr{display:grid;grid-template-columns:1fr 120px 120px;padding:11px 18px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;transition:background .2s;}
+  .sr:hover{background:rgba(255,255,255,.03);}
+  .sr:last-of-type{border-bottom:none;}
+  .si{color:var(--wh);}
+  .sv7{text-align:right;color:var(--mu);font-size:14px;}
+  .sv8{text-align:right;font-weight:700;}
+  .stot{display:grid;grid-template-columns:1fr 120px 120px;padding:12px 18px;font-size:14px;font-weight:900;background:rgba(179,136,255,.08);border-top:1px solid rgba(179,136,255,.2);}
+
+  /* 2COL */
+  .twoc{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:44px;}
+  .pnl{background:var(--nm);border-radius:16px;padding:26px;}
+  .pt{font-size:14px;letter-spacing:2px;color:var(--mu);font-weight:700;border-left:3px solid var(--gold);padding-left:10px;margin-bottom:18px;}
+  .lr{display:flex;align-items:center;gap:6px;margin-bottom:9px;font-size:14px;}
+  .ld{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .ln{flex:1;color:var(--wh);}
+  .lp{font-weight:700;min-width:38px;text-align:right;}
+  .lv{color:var(--mu);font-size:14px;min-width:80px;text-align:right;}
+  svg.donut{display:block;margin:0 auto 18px;}
+
+  /* CONCLUSION */
+  .concl{background:linear-gradient(135deg,var(--nm),#182f5e);border-radius:16px;padding:32px;text-align:center;margin-bottom:32px;border:1px solid rgba(245,197,24,.2);position:relative;overflow:hidden;}
+  .concl::before{content:'';position:absolute;top:-50px;left:-50px;width:160px;height:160px;border-radius:50%;background:rgba(245,197,24,.04);}
+  .concl::after{content:'';position:absolute;bottom:-70px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(0,201,177,.04);}
+  .cey{font-size:14px;letter-spacing:4px;color:var(--teal);margin-bottom:12px;}
+  .cmain{font-size:clamp(15px,2.4vw,21px);font-weight:900;line-height:1.55;margin-bottom:12px;position:relative;z-index:1;}
+  .cmain .hl{color:var(--gold);}
+  .cdesc{font-size:14px;color:var(--mu);line-height:1.9;position:relative;z-index:1;}
+  .chips{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px;position:relative;z-index:1;}
+  .chip{font-size:14px;padding:4px 12px;border-radius:20px;}
+
+  footer{text-align:center;font-size:14px;color:var(--mu);padding-top:20px;border-top:1px solid rgba(255,255,255,.08);letter-spacing:1px;}
+  @media(max-width:700px){.hero,.twoc,.catg{grid-template-columns:1fr;}.hlg{grid-template-columns:repeat(2,1fr);}.yoy{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="ey">令和8年度 鹿追町 高校支援予算</div>
+      <h1>鹿追町が<span class="hl">鹿追高校</span>に<br>投じる教育支援の全容</h1>
+      <p class="hdesc">
+        人口約5,000人の小さな町が、地域唯一の高校を守り育てるために<br>
+        単年度で<strong>約2億3,843万円</strong>の予算を高校支援事業に投下。<br>
+        寮・シェアハウス整備から海外派遣・通学費助成・奨学金まで、<br>
+        多層的な支援で「高校がある町」を維持しています。
+      </p>
+    </div>
+    <div class="badge">
+      <div class="by">令和8年度 予算総額</div>
+      <div><span class="bnum">2.4</span><span class="bunit">億円</span></div>
+      <div class="bsub">238,426千円</div>
+      <span class="bchip">▲ 前年度比 +10,838千円</span>
+    </div>
+  </div>
+
+  <!-- 01 YOY -->
+  <div class="sh"><span class="sn">01</span><span class="st">前年度比較</span></div>
+  <div class="yoy">
+    <div class="yblk">
+      <div class="yyr">REIWA 7 令和7年度</div>
+      <div><span class="yamt" style="color:var(--mu)">227,588</span><span class="yu" style="color:var(--mu)">千円</span></div>
+      <div class="ysm">約2億2,759万円</div>
+    </div>
+    <div class="ymid">
+      <div class="yarr">→</div>
+      <div class="ydelta">+4.8%</div>
+      <div class="ydl">+10,838千円 増加</div>
+    </div>
+    <div class="yblk">
+      <div class="yyr">REIWA 8 令和8年度</div>
+      <div><span class="yamt" style="color:var(--gold)">238,426</span><span class="yu" style="color:var(--gold)">千円</span></div>
+      <div class="ysm">約2億3,843万円</div>
+    </div>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <div class="hlg">
+    <div class="hlb h1"><div class="hico">🏠</div><div class="hval">96,928</div><div class="hu">千円</div><div class="hlbl">生活支援<br>(寮・シェアハウス)</div></div>
+    <div class="hlb h2"><div class="hico">✈️</div><div class="hval">42,983</div><div class="hu">千円</div><div class="hlbl">海外留学・<br>派遣支援</div></div>
+    <div class="hlb h3"><div class="hico">🚌</div><div class="hval">45,902</div><div class="hu">千円</div><div class="hlbl">通学費・交通<br>支援</div></div>
+    <div class="hlb h4"><div class="hico">💴</div><div class="hval">29,305</div><div class="hu">千円</div><div class="hlbl">修学資金<br>貸付</div></div>
+  </div>
+
+  <!-- 02 CATEGORY -->
+  <div class="sh"><span class="sn">02</span><span class="st">大分類別 予算内訳</span></div>
+  <div class="catg">
+    <div class="cat ca">
+      <div class="cico">🏫</div>
+      <div class="cnm">鹿追高等学校 教育支援事業</div>
+      <div><span class="camt">204,511</span><span class="cu">千円</span></div>
+      <span class="cpct">85.8%</span>
+    </div>
+    <div class="cat cb">
+      <div class="cico">📋</div>
+      <div class="cnm">その他高校関連事業</div>
+      <div><span class="camt">33,915</span><span class="cu">千円</span></div>
+      <span class="cpct">14.2%</span>
+    </div>
+  </div>
+
+  <!-- 03 BARS -->
+  <div class="sh"><span class="sn">03</span><span class="st">教育支援事業 詳細内訳（令和8年度）</span></div>
+  <div class="bars">
+    <div class="br">
+      <div class="bl">Penguin House<br><span class="bs">シェアハウス事業</span></div>
+      <div class="bt"><div class="bf" style="width:100%;background:linear-gradient(90deg,#006688,#00c9b1)"><span class="bi">シェアハウス</span></div></div>
+      <div class="bv">48,756千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">Penguin Dormitory<br><span class="bs">高校寄宿舎事業</span></div>
+      <div class="bt"><div class="bf" style="width:98.8%;background:linear-gradient(90deg,#005577,#007fa8)"><span class="bi">寄宿舎</span></div></div>
+      <div class="bv">48,172千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">高校生海外派遣事業<br><span class="bs">カナダ派遣・引率</span></div>
+      <div class="bt"><div class="bf" style="width:88.1%;background:linear-gradient(90deg,#c58c00,#f5c518)"><span class="bi">海外派遣</span></div></div>
+      <div class="bv">42,983千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">通学費外助成事業<br><span class="bs">通学費・下宿・見学旅行</span></div>
+      <div class="bt"><div class="bf" style="width:58.8%;background:linear-gradient(90deg,#8a3a00,#ff6b5b)"><span class="bi">通学費</span></div></div>
+      <div class="bv">28,650千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">協力会補助（通学車両等）<br><span class="bs">通学バス・部活バス</span></div>
+      <div class="bt"><div class="bf" style="width:35.4%;background:linear-gradient(90deg,#5a2080,#b388ff)"><span class="bi">車両</span></div></div>
+      <div class="bv">17,252千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">協力会補助（広報・運営）<br><span class="bs">全国募集・公設塾等</span></div>
+      <div class="bt"><div class="bf" style="width:12.1%;background:linear-gradient(90deg,#3a5a20,#7bc36a)"><span class="bi">協力会</span></div></div>
+      <div class="bv">5,899千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">みらい留学サポート<br><span class="bs">コーディネーター委託</span></div>
+      <div class="bt"><div class="bf" style="width:11.3%;background:linear-gradient(90deg,#204060,#4fc3f7)"><span class="bi">みらい留学</span></div></div>
+      <div class="bv">5,500千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">学習支援事業<br><span class="bs">オンライン公設塾</span></div>
+      <div class="bt"><div class="bf" style="width:8.8%;background:linear-gradient(90deg,#204040,#4fbfbf)"><span class="bi">学習</span></div></div>
+      <div class="bv">4,299千円</div>
+    </div>
+    <div class="br">
+      <div class="bl">女子専用下宿管理<br><span class="bs">管理業務委託</span></div>
+      <div class="bt"><div class="bf" style="width:6.2%;background:linear-gradient(90deg,#602040,#cc7099)"><span class="bi">下宿</span></div></div>
+      <div class="bv">3,000千円</div>
+    </div>
+  </div>
+
+  <!-- 04 SONOTA -->
+  <div class="sh"><span class="sn">04</span><span class="st">その他高校関連事業 内訳</span></div>
+  <div class="stbl">
+    <div class="shd"><span>事業内容</span><span style="text-align:right">令和7年度</span><span style="text-align:right">令和8年度</span></div>
+    <div class="sr"><span class="si">🎓 高校教育振興補助金</span><span class="sv7">600千円</span><span class="sv8" style="color:var(--wh)">600千円</span></div>
+    <div class="sr"><span class="si">🌐 高校インターネット料</span><span class="sv7">80千円</span><span class="sv8" style="color:var(--wh)">80千円</span></div>
+    <div class="sr"><span class="si">🏅 武藤孔二記念奨学補助金</span><span class="sv7">192千円</span><span class="sv8" style="color:var(--wh)">192千円</span></div>
+    <div class="sr"><span class="si">✈️ ストニィプレイン町派遣事業負担金</span><span class="sv7">671千円</span><span class="sv8" style="color:var(--wh)">671千円</span></div>
+    <div class="sr"><span class="si">🤝 ストニィプレイン町受入事業負担金</span><span class="sv7">1,000千円</span><span class="sv8" style="color:var(--wh)">1,000千円</span></div>
+    <div class="sr"><span class="si">💴 修学資金貸付金</span><span class="sv7">34,582千円</span><span class="sv8" style="color:var(--sky)">29,305千円</span></div>
+    <div class="sr"><span class="si">💻 生徒用タブレット整備事業（償還金）</span><span class="sv7">2,074千円</span><span class="sv8" style="color:var(--wh)">2,067千円</span></div>
+    <div class="stot"><span>合　計</span><span class="sv7" style="font-weight:900;color:var(--mu)">39,199千円</span><span class="sv8" style="color:var(--lav)">33,915千円</span></div>
+  </div>
+
+  <!-- 05 DONUT + SCALE -->
+  <div class="sh"><span class="sn">05</span><span class="st">財源内訳 ／ 投資規模の感覚値</span></div>
+  <div class="twoc">
+    <div class="pnl">
+      <div class="pt">教育支援事業 財源別内訳（204,511千円）</div>
+      <!-- r=80 circ=502.7 | その他61645=30.1%=151.3 | 一財56404=27.6%=138.7 | 地方債42000=20.5%=103.1 | 国28062=13.7%=68.9 | 特交16400=8.0%=40.4 -->
+      <svg class="donut" viewBox="0 0 200 200" width="170" height="170">
+        <circle cx="100" cy="100" r="60" fill="var(--nm)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--gold)"   stroke-width="22" stroke-dasharray="151.3 351.4" stroke-dashoffset="0"      transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--sky)"    stroke-width="22" stroke-dasharray="138.7 364.0" stroke-dashoffset="-151.3"  transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--lav)"    stroke-width="22" stroke-dasharray="103.1 399.6" stroke-dashoffset="-290.0"  transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--coral)"  stroke-width="22" stroke-dasharray="68.9 433.8"  stroke-dashoffset="-393.1"  transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--teal)"   stroke-width="22" stroke-dasharray="40.4 462.3"  stroke-dashoffset="-462.0"  transform="rotate(-90 100 100)"/>
+        <text x="100" y="96"  text-anchor="middle" fill="var(--wh)"  font-size="11" font-family="Noto Sans JP" font-weight="700">財源</text>
+        <text x="100" y="111" text-anchor="middle" fill="var(--mu)" font-size="9"  font-family="Noto Sans JP">5分類</text>
+      </svg>
+      <div class="lr"><div class="ld" style="background:var(--gold)"></div><span class="ln">その他特定財源</span><span class="lp" style="color:var(--gold)">30.1%</span><span class="lv">61,645千円</span></div>
+      <div class="lr"><div class="ld" style="background:var(--sky)"></div><span class="ln">一般財源</span><span class="lp" style="color:var(--sky)">27.6%</span><span class="lv">56,404千円</span></div>
+      <div class="lr"><div class="ld" style="background:var(--lav)"></div><span class="ln">地方債</span><span class="lp" style="color:var(--lav)">20.5%</span><span class="lv">42,000千円</span></div>
+      <div class="lr"><div class="ld" style="background:var(--coral)"></div><span class="ln">国庫補助</span><span class="lp" style="color:var(--coral)">13.7%</span><span class="lv">28,062千円</span></div>
+      <div class="lr"><div class="ld" style="background:var(--teal)"></div><span class="ln">特別交付税</span><span class="lp" style="color:var(--teal)">8.0%</span><span class="lv">16,400千円</span></div>
+    </div>
+    <div class="pnl">
+      <div class="pt">投資規模の感覚値</div>
+      <div style="margin-bottom:22px">
+        <p style="font-size:14px;color:var(--mu);letter-spacing:1px;margin-bottom:5px">町民一人あたり投資額（人口約5,000人）</p>
+        <div style="font-family:'Bebas Neue';font-size:46px;color:var(--gold);line-height:1">¥47,685</div>
+        <p style="font-size:14px;color:var(--mu)">/ 年</p>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.08);margin:0 0 20px"></div>
+      <div style="margin-bottom:22px">
+        <p style="font-size:14px;color:var(--mu);letter-spacing:1px;margin-bottom:5px">生徒一人あたり換算（在校生204名：79名＋75名＋50名）</p>
+        <div style="font-family:'Bebas Neue';font-size:46px;color:var(--teal);line-height:1">¥1,168,755</div>
+        <p style="font-size:14px;color:var(--mu)">/ 年 ≈ <strong style="color:var(--teal)">約117万円</strong> の行政投資</p>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.08);margin:0 0 20px"></div>
+      <div>
+        <p style="font-size:14px;color:var(--mu);letter-spacing:1px;margin-bottom:8px">一般財源（純粋な町費）の割合</p>
+        <div style="background:rgba(255,255,255,.055);border-radius:4px;height:22px;overflow:hidden;margin-bottom:6px">
+          <div style="width:27.6%;height:100%;background:linear-gradient(90deg,#0073a8,#4fc3f7);border-radius:4px"></div>
+        </div>
+        <p style="font-size:14px;color:var(--sky)">56,404千円 (27.6%) が鹿追町の純粋な財政投入</p>
+        <p style="font-size:14px;color:var(--mu);margin-top:4px">残り72.4%は国・地方債・交付税・基金等の特定財源を活用</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="concl">
+    <div class="cey">CONCLUSION</div>
+    <div class="cmain">鹿追町は「高校がある町」を守るため、<br>年間 <span class="hl">約2億3,843万円</span> の教育投資を続けています</div>
+    <p class="cdesc">
+      寮・シェアハウスの整備・運営、全国からの生徒募集、カナダ海外派遣プログラム、<br>
+      通学費助成、修学資金貸付、国際交流（ストニィプレイン町）——<br>
+      多層的・包括的な支援が「地域の学校」としての鹿追高校を支えています。
+    </p>
+    <div class="chips">
+      <span class="chip" style="background:rgba(0,201,177,.1);border:1px solid var(--teal);color:var(--teal)">🏠 住まい支援</span>
+      <span class="chip" style="background:rgba(245,197,24,.1);border:1px solid var(--gold);color:var(--gold)">✈️ 海外留学</span>
+      <span class="chip" style="background:rgba(255,107,91,.1);border:1px solid var(--coral);color:var(--coral)">🚌 通学費支援</span>
+      <span class="chip" style="background:rgba(79,195,247,.1);border:1px solid var(--sky);color:var(--sky)">📖 学習・奨学</span>
+      <span class="chip" style="background:rgba(179,136,255,.1);border:1px solid var(--lav);color:var(--lav)">🤝 国際交流</span>
+    </div>
+  </div>
+
+  <footer>
+    出典：R8_鹿追高等学校関連事業一覧（ver5.0　財政係）/ 8年度予算集計　｜　単位：千円　｜　令和8年度（2026年度）鹿追町教育費<br>
+    ※国際バカロレア事業・地域おこし協力隊人件費等は集計対象外
+  </footer>
+
+</div>
+</body>
+</html>
